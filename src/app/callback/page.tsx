@@ -6,13 +6,11 @@ import { useSearchParams } from 'next/navigation';
 export default function CallbackPage() {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
-  const state = searchParams.get('state');
-  const error = searchParams.get('error');
+  const error = searchParams.get('error'); // ← state 削除
 
   useEffect(() => {
     if (code) {
       console.log('Authorization code:', code);
-      // ここでバックエンドにPOSTしたり、次の処理に進めたりします
     } else if (error) {
       console.error('Authorization error:', error);
     }
