@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function CallbackPage() {
+function CallbackContent() {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   const error = searchParams.get('error');
-  // const state = searchParams.get('state'); ← 削除
 
   useEffect(() => {
     if (code) {
@@ -29,5 +28,13 @@ export default function CallbackPage() {
         <p>認証コードを取得中...</p>
       )}
     </div>
+  );
+}
+
+export default function CallbackPage() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center">読み込み中...</div>}>
+      <CallbackContent />
+    </Suspense>
   );
 }
