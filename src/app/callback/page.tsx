@@ -6,7 +6,6 @@ import { useSearchParams } from 'next/navigation';
 export default function CallbackPage() {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
-  // const state = searchParams.get('state'); ← 削除する
   const error = searchParams.get('error');
 
   useEffect(() => {
