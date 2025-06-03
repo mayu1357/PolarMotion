@@ -7,6 +7,7 @@ export default function CallbackPage() {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   const error = searchParams.get('error');
+  // const state = searchParams.get('state'); ← 削除
 
   useEffect(() => {
     if (code) {
